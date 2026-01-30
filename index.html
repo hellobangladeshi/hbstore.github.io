@@ -1,0 +1,2651 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HB Store - আপনার বিশ্বস্ত শপিং প্ল্যাটফর্ম</title>
+<meta name="description" content="HB Store - সেরা দামে সেরা প্রোডাক্ট কিনুন। ইলেকট্রনিক্স, ফ্যাশন, হোম অ্যাপ্লায়েন্স সহ সকল ধরনের প্রোডাক্ট পাওয়া যায়">
+<meta name="keywords" content="শপিং, ই-কমার্স, অনলাইন শপিং, প্রোডাক্ট, বাংলাদেশী শপিং">
+<meta name="author" content="HB Store Team">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/6.0.3/ionicons.min.css">
+
+<style>
+:root {
+    --primary: #EF0479;
+    --secondary: #FFD93D;
+    --accent: #4F46E5;
+    --dark: #0a0e27;
+    --light: #f8fafc;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --gray: #6B7280;
+    --gray-light: #E5E7EB;
+    --gradient: linear-gradient(135deg, #EF0479, #FFD93D);
+    --gradient-alt: linear-gradient(135deg, #4F46E5, #8B5CF6);
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8fafc;
+    color: #333;
+    overflow-x: hidden;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header & Navigation */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 10px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 15px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 25px rgba(239, 4, 121, 0.4);
+    color: white;
+    animation: pulse 3s infinite;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text h3 {
+    font-size: 1.8rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.logo-text span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gradient);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-icon:hover {
+    background: var(--gradient);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.cart-count, .favorite-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--primary);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.btn-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 25px;
+    background: var(--gradient);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(239, 4, 121, 0.3);
+}
+
+.btn-login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(239, 4, 121, 0.5);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background: var(--dark);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.95), rgba(26, 29, 58, 0.9));
+    color: white;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(239, 4, 121, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 217, 61, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(79, 70, 229, 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-text {
+    animation: fadeInUp 1s ease;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Category Section */
+.categories {
+    padding: 80px 0 40px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--dark);
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient);
+    border-radius: 2px;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 20px auto 0;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.category-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-light);
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.category-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.category-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.category-card span {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+/* Featured Products */
+.featured-products {
+    padding: 80px 0;
+    background: #f1f5f9;
+}
+
+.products-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    background: white;
+    border: 1px solid var(--gray-light);
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--gradient);
+    color: white;
+    border-color: transparent;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid var(--gray-light);
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.product-badge.hot {
+    background: var(--danger);
+}
+
+.product-badge.new {
+    background: var(--success);
+}
+
+.product-badge.sale {
+    background: var(--warning);
+}
+
+.product-image {
+    height: 200px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 160px;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-actions {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-actions {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.product-action-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.product-action-btn:hover {
+    background: var(--gradient);
+    color: white;
+    transform: scale(1.1);
+}
+
+.product-action-btn.favorite.active {
+    background: var(--primary);
+    color: white;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-category {
+    color: var(--gray);
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    color: var(--warning);
+    font-size: 0.9rem;
+}
+
+.product-rating span {
+    color: var(--gray);
+    margin-left: 5px;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.current-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.original-price {
+    font-size: 1rem;
+    color: var(--gray);
+    text-decoration: line-through;
+}
+
+.discount {
+    font-size: 0.9rem;
+    background: #FEE2E2;
+    color: var(--danger);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-add-to-cart {
+    padding: 10px 20px;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.btn-add-to-cart:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(239, 4, 121, 0.3);
+}
+
+.btn-add-to-cart.added {
+    background: var(--success);
+}
+
+.product-stock {
+    font-size: 0.85rem;
+    color: var(--success);
+    font-weight: 600;
+}
+
+.product-stock.low {
+    color: var(--warning);
+}
+
+.product-stock.out {
+    color: var(--danger);
+}
+
+/* Featured Section */
+.features {
+    padding: 80px 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-light);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.feature-card p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* Footer */
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 80px 0 20px;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h4 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: var(--secondary);
+}
+
+.footer-section p {
+    opacity: 0.8;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: var(--secondary);
+    transform: translateX(5px);
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link:hover {
+    background: var(--gradient);
+    transform: translateY(-3px);
+    border-color: transparent;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
+}
+
+.footer-bottom-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-social {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer-copyright {
+    flex: 2;
+    text-align: center;
+}
+
+.footer-copyright p {
+    margin: 5px 0;
+    opacity: 0.7;
+    font-size: 0.95rem;
+}
+
+.footer-copyright-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-copyright-links a {
+    color: var(--secondary);
+    text-decoration: none;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease;
+}
+
+.footer-copyright-links a:hover {
+    opacity: 1;
+}
+
+.footer-legal {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.developer-credit {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.developer-credit strong {
+    color: var(--secondary);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideInRight 0.3s ease;
+}
+
+.modal-header {
+    padding: 25px;
+    border-bottom: 1px solid var(--gray-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray);
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--primary);
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+/* Cart Modal */
+.cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.cart-item-img img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.cart-item-price {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f1f5f9;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.quantity-btn {
+    background: none;
+    border: none;
+    color: var(--dark);
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.quantity {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.remove-item:hover {
+    transform: scale(1.1);
+}
+
+.cart-summary {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.summary-row.total {
+    border-top: 2px solid var(--gray-light);
+    padding-top: 15px;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+.checkout-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(239, 4, 121, 0.3);
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.empty-cart i {
+    font-size: 4rem;
+    color: var(--gray-light);
+    margin-bottom: 20px;
+}
+
+.empty-cart p {
+    color: var(--gray);
+    margin-bottom: 20px;
+}
+
+/* Notification Toast */
+.notification-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--success), #0EA271);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(150%);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    max-width: 350px;
+}
+
+.notification-toast.show {
+    transform: translateX(0);
+}
+
+.notification-toast.error {
+    background: linear-gradient(135deg, var(--danger), #D32F2F);
+}
+
+.notification-toast.warning {
+    background: linear-gradient(135deg, var(--warning), #D97706);
+}
+
+/* Scroll to top button */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(239, 4, 121, 0.4);
+    border: none;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(239, 4, 121, 0.6);
+}
+
+/* Product Details Page Styles */
+.product-details-page {
+    padding: 80px 0;
+}
+
+.product-details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.product-gallery {
+    position: sticky;
+    top: 100px;
+}
+
+.product-main-image {
+    background: #f8fafc;
+    border-radius: 15px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.product-main-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.product-thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.product-thumbnail.active {
+    border-color: var(--primary);
+}
+
+.product-thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-info-section .product-category {
+    font-size: 0.9rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.product-info-section .product-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.product-info-section .product-rating {
+    margin-bottom: 20px;
+}
+
+.product-info-section .product-price {
+    margin-bottom: 25px;
+}
+
+.product-info-section .current-price {
+    font-size: 2rem;
+}
+
+.product-description {
+    margin-bottom: 30px;
+    line-height: 1.8;
+    color: var(--dark);
+}
+
+.product-specs {
+    margin-bottom: 30px;
+}
+
+.product-specs h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.product-specs ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.product-specs li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-specs li i {
+    color: var(--primary);
+}
+
+.product-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    background: #f1f5f9;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.quantity-selector button {
+    background: none;
+    border: none;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark);
+    transition: all 0.3s ease;
+}
+
+.quantity-selector button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.quantity-selector input {
+    width: 60px;
+    border: none;
+    background: none;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.product-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-buy-now {
+    padding: 15px 30px;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-buy-now:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(239, 4, 121, 0.3);
+}
+
+.product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid var(--gray-light);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.meta-item i {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+/* Related Products */
+.related-products {
+    padding: 80px 0;
+    background: #f1f5f9;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .product-details-container {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .product-details-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-gallery {
+        position: static;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        padding: 100px 30px 30px;
+        backdrop-filter: blur(20px);
+        transition: right 0.4s ease;
+        z-index: 1000;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .categories-grid,
+    .products-grid,
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-social,
+    .footer-copyright,
+    .footer-legal {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .product-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .product-buttons {
+        width: 100%;
+    }
+    
+    .btn-buy-now, .btn-add-to-cart {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .categories-grid,
+    .products-grid,
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-meta {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Header & Navigation -->
+<header>
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <div class="logo-icon">HB</div>
+                <div class="logo-text">
+                    <h3>HB Store</h3>
+                    <span>আপনার বিশ্বস্ত শপিং প্ল্যাটফর্ম</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="#categories"><i class="fas fa-th-large"></i> ক্যাটাগরি</a></li>
+                <li><a href="#featured"><i class="fas fa-star"></i> ফিচার্ড</a></li>
+                <li><a href="products.html"><i class="fas fa-shopping-bag"></i> সকল প্রোডাক্ট</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> আমাদের সম্পর্কে</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icons">
+                    <a href="#" class="nav-icon" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="nav-icon favorite-icon" id="favoritesBtn">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorite-count">3</span>
+                    </a>
+                    <a href="#" class="nav-icon cart-icon" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">2</span>
+                    </a>
+                </div>
+                <a href="login.html" class="btn-login">
+                    <i class="fas fa-user"></i> লগইন
+                </a>
+                
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text reveal">
+                <h1>সেরা দামে সেরা প্রোডাক্ট</h1>
+                <p>HB Store এ পাবেন ইলেকট্রনিক্স, ফ্যাশন, হোম অ্যাপ্লায়েন্স সহ সকল ধরনের প্রোডাক্ট। ১০০% অথেনটিক প্রোডাক্ট, সিকিউর পেমেন্ট এবং দ্রুত ডেলিভারি।</p>
+                
+                <div class="hero-buttons">
+                    <a href="#categories" class="btn-buy-now">
+                        <i class="fas fa-shopping-bag"></i> শপিং শুরু করুন
+                    </a>
+                    <a href="products.html" class="btn-buy-now" style="background: var(--dark);">
+                        <i class="fas fa-fire"></i> হট ডিলস
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image reveal">
+                <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="HB Store Hero">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section id="categories" class="categories">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>ক্যাটাগরি ব্রাউজ করুন</h2>
+            <p>আপনার প্রয়োজনীয় প্রোডাক্ট খুঁজুন আমাদের বিভিন্ন ক্যাটাগরিতে</p>
+        </div>
+        
+        <div class="categories-grid">
+            <a href="category.html?cat=electronics" class="category-card reveal">
+                <div class="category-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <h3>ইলেকট্রনিক্স</h3>
+                <span>২০+ প্রোডাক্ট</span>
+            </a>
+            
+            <a href="category.html?cat=mobile" class="category-card reveal">
+                <div class="category-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>মোবাইল ফোন</h3>
+                <span>১৫+ প্রোডাক্ট</span>
+            </a>
+            
+            <a href="category.html?cat=fashion" class="category-card reveal">
+                <div class="category-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>ফ্যাশন</h3>
+                <span>৫০+ প্রোডাক্ট</span>
+            </a>
+            
+            <a href="category.html?cat=home" class="category-card reveal">
+                <div class="category-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>হোম অ্যাপ্লায়েন্স</h3>
+                <span>৩০+ প্রোডাক্ট</span>
+            </a>
+            
+            <a href="category.html?cat=beauty" class="category-card reveal">
+                <div class="category-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h3>বিউটি</h3>
+                <span>২৫+ প্রোডাক্ট</span>
+            </a>
+            
+            <a href="category.html?cat=sports" class="category-card reveal">
+                <div class="category-icon">
+                    <i class="fas fa-basketball-ball"></i>
+                </div>
+                <h3>স্পোর্টস</h3>
+                <span>১৮+ প্রোডাক্ট</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section id="featured" class="featured-products">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>ফিচার্ড প্রোডাক্ট</h2>
+            <p>আমাদের সর্বাধিক বিক্রিত ও জনপ্রিয় প্রোডাক্টসমূহ</p>
+        </div>
+        
+        <div class="products-filter reveal">
+            <button class="filter-btn active" data-filter="all">সব</button>
+            <button class="filter-btn" data-filter="electronics">ইলেকট্রনিক্স</button>
+            <button class="filter-btn" data-filter="mobile">মোবাইল</button>
+            <button class="filter-btn" data-filter="fashion">ফ্যাশন</button>
+            <button class="filter-btn" data-filter="home">হোম</button>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card reveal" data-category="electronics">
+                <div class="product-badge hot">হট</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="ল্যাপটপ">
+                    <div class="product-actions">
+                        <button class="product-action-btn favorite" onclick="toggleFavorite(this)">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="product-action-btn" onclick="quickView(1)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">ইলেকট্রনিক্স</div>
+                    <h3 class="product-title">Dell XPS 13 ল্যাপটপ</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(৪.৫)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">৳৮৫,৯৯৯</span>
+                        <span class="original-price">৳৯৯,৯৯৯</span>
+                        <span class="discount">১৪% ছাড়</span>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-add-to-cart" onclick="addToCart(1)">
+                            <i class="fas fa-cart-plus"></i> কার্টে যোগ
+                        </button>
+                        <span class="product-stock">স্টকে আছে</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card reveal" data-category="mobile">
+                <div class="product-badge new">নতুন</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="স্মার্টফোন">
+                    <div class="product-actions">
+                        <button class="product-action-btn favorite" onclick="toggleFavorite(this)">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="product-action-btn" onclick="quickView(2)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">মোবাইল ফোন</div>
+                    <h3 class="product-title">Samsung Galaxy S23 Ultra</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(৫.০)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">৳১,২৫,৯৯৯</span>
+                        <span class="original-price">৳১,৩৯,৯৯৯</span>
+                        <span class="discount">১০% ছাড়</span>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-add-to-cart" onclick="addToCart(2)">
+                            <i class="fas fa-cart-plus"></i> কার্টে যোগ
+                        </button>
+                        <span class="product-stock low">শেষ হচ্ছে</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card reveal" data-category="fashion">
+                <div class="product-badge sale">বিক্রয়</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="জামা">
+                    <div class="product-actions">
+                        <button class="product-action-btn favorite" onclick="toggleFavorite(this)">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="product-action-btn" onclick="quickView(3)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">ফ্যাশন</div>
+                    <h3 class="product-title">পুরুষদের কটন শার্ট</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(৪.০)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">৳১,২৯৯</span>
+                        <span class="original-price">৳২,৫৯৯</span>
+                        <span class="discount">৫০% ছাড়</span>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-add-to-cart" onclick="addToCart(3)">
+                            <i class="fas fa-cart-plus"></i> কার্টে যোগ
+                        </button>
+                        <span class="product-stock">স্টকে আছে</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card reveal" data-category="home">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="ব্লেন্ডার">
+                    <div class="product-actions">
+                        <button class="product-action-btn favorite" onclick="toggleFavorite(this)">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="product-action-btn" onclick="quickView(4)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">হোম অ্যাপ্লায়েন্স</div>
+                    <h3 class="product-title">ফিলিপস মিক্সার গ্রাইন্ডার</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(৪.৫)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">৳৪,৫৯৯</span>
+                        <span class="original-price">৳৫,৯৯৯</span>
+                        <span class="discount">২৩% ছাড়</span>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-add-to-cart" onclick="addToCart(4)">
+                            <i class="fas fa-cart-plus"></i> কার্টে যোগ
+                        </button>
+                        <span class="product-stock">স্টকে আছে</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center" style="margin-top: 50px;">
+            <a href="products.html" class="btn-buy-now">
+                <i class="fas fa-eye"></i> আরও প্রোডাক্ট দেখুন
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>কেন HB Store বেছে নেবেন?</h2>
+            <p>আমাদের সেবা ও সুবিধা সম্পর্কে জানুন</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>১০০% অথেনটিক</h3>
+                <p>সমস্ত প্রোডাক্ট ব্র্যান্ড অথেনটিক এবং গ্যারান্টিযুক্ত। কোনও নকল প্রোডাক্ট নয়।</p>
+            </div>
+            
+            <div class="feature-card reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>দ্রুত ডেলিভারি</h3>
+                <p>ঢাকায় ২৪ ঘণ্টা এবং সারাদেশে ৩-৫ কার্যদিবসে ডেলিভারি। ক্যাশ অন ডেলিভারি উপলব্ধ।</p>
+            </div>
+            
+            <div class="feature-card reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-undo-alt"></i>
+                </div>
+                <h3>সহজ রিটার্ন</h3>
+                <p>৭ দিনের মধ্যে সহজ রিটার্ন পলিসি। যেকোনো সমস্যায় আমরা আছি আপনার পাশে।</p>
+            </div>
+            
+            <div class="feature-card reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>২৪/৭ সাপোর্ট</h3>
+                <p>যেকোনো সমস্যায় কল করুন আমাদের হেল্পলাইনে। আমরা আছি ২৪ ঘণ্টা আপনার সেবায়।</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>HB Store</h4>
+                <p>বাংলাদেশের বিশ্বস্ত অনলাইন শপিং প্ল্যাটফর্ম। সেরা দামে সেরা প্রোডাক্ট কিনুন এবং উপভোগ করুন নিরাপদ শপিং এক্সপেরিয়েন্স।</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>দ্রুত লিঙ্ক</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> হোম</a></li>
+                    <li><a href="products.html"><i class="fas fa-chevron-right"></i> সকল প্রোডাক্ট</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> আমাদের সম্পর্কে</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> যোগাযোগ</a></li>
+                    <li><a href="blog.html"><i class="fas fa-chevron-right"></i> ব্লগ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>ক্যাটাগরি</h4>
+                <ul class="footer-links">
+                    <li><a href="category.html?cat=electronics"><i class="fas fa-chevron-right"></i> ইলেকট্রনিক্স</a></li>
+                    <li><a href="category.html?cat=mobile"><i class="fas fa-chevron-right"></i> মোবাইল ফোন</a></li>
+                    <li><a href="category.html?cat=fashion"><i class="fas fa-chevron-right"></i> ফ্যাশন</a></li>
+                    <li><a href="category.html?cat=home"><i class="fas fa-chevron-right"></i> হোম অ্যাপ্লায়েন্স</a></li>
+                    <li><a href="category.html?cat=beauty"><i class="fas fa-chevron-right"></i> বিউটি</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>আমাদের ঠিকানা</h4>
+                <p><i class="fas fa-map-marker-alt"></i> ১২৩ শপিং স্ট্রিট, মতিঝিল, ঢাকা-১০০০</p>
+                <p><i class="fas fa-phone"></i> +৮৮০ ১৭১২-৩৪৫৬৭৮</p>
+                <p><i class="fas fa-envelope"></i> support@hbstore.com</p>
+                <p><i class="fas fa-clock"></i> রবি-বৃহস্পতি: ৯:০০ AM - ১১:০০ PM</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="footer-social">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/HBStoreOfficial" target="_blank" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/HBStoreOfficial" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@HBStoreOfficial" target="_blank" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>© ২০২৬ HB Store. সকল অধিকার সংরক্ষিত।</p>
+                    <div class="footer-copyright-links">
+                        <a href="privacy-policy.html">প্রাইভেসি পলিসি</a> | 
+                        <a href="terms.html">শর্তাবলী</a> | 
+                        <a href="refund.html">রিফান্ড পলিসি</a>
+                    </div>
+                </div>
+                
+                <div class="footer-legal">
+                    <img src="https://i.imgur.com/mFT6P0V.png" alt="Payment Methods" style="height: 30px; filter: brightness(0) invert(1);">
+                </div>
+            </div>
+            
+            <div class="developer-credit">
+                Developed with <i class="fas fa-heart" style="color: #EF0479;"></i> by <strong>HB Store Team</strong>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Cart Modal -->
+<div class="modal" id="cartModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>আপনার শপিং কার্ট</h3>
+            <button class="modal-close" onclick="closeCartModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>আপনার কার্টটি খালি</p>
+                    <a href="products.html" class="btn-buy-now">শপিং শুরু করুন</a>
+                </div>
+            </div>
+            
+            <div class="cart-summary" id="cartSummary" style="display: none;">
+                <div class="summary-row">
+                    <span>সাবটোটাল</span>
+                    <span>৳<span id="cartSubtotal">0</span></span>
+                </div>
+                <div class="summary-row">
+                    <span>ডেলিভারি চার্জ</span>
+                    <span>৳<span id="deliveryCharge">60</span></span>
+                </div>
+                <div class="summary-row total">
+                    <span>মোট</span>
+                    <span>৳<span id="cartTotal">0</span></span>
+                </div>
+                <button class="checkout-btn" onclick="window.location.href='checkout.html'">
+                    <i class="fas fa-credit-card"></i> চেকআউট করুন
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product Quick View Modal -->
+<div class="modal" id="quickViewModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>প্রোডাক্ট ডিটেইলস</h3>
+            <button class="modal-close" onclick="closeQuickViewModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="quickViewContent">
+            <!-- Quick view content will be dynamically added here -->
+        </div>
+    </div>
+</div>
+
+<!-- Notification Toast -->
+<div class="notification-toast" id="notificationToast">
+    <i class="fas fa-check-circle" id="toastIcon"></i>
+    <span id="toastMessage">সফলভাবে সংরক্ষিত হয়েছে!</span>
+</div>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Product Data
+const products = [
+    {
+        id: 1,
+        name: "Dell XPS 13 ল্যাপটপ",
+        category: "electronics",
+        price: 85999,
+        originalPrice: 99999,
+        image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        rating: 4.5,
+        reviews: 124,
+        stock: "in",
+        description: "Intel Core i7 প্রসেসর, 16GB RAM, 512GB SSD, 13.3-inch 4K ডিসপ্লে সহ Dell XPS 13 ল্যাপটপ। পারফেক্ট ফর প্রফেশনাল ওয়ার্ক।",
+        specs: [
+            "প্রসেসর: Intel Core i7-1165G7",
+            "র‍্যাম: 16GB LPDDR4x",
+            "স্টোরেজ: 512GB PCIe NVMe SSD",
+            "ডিসপ্লে: 13.3-inch 4K UHD+",
+            "ব্যাটারি: 52Whr, উপরে 10 ঘন্টা ব্যাকআপ"
+        ]
+    },
+    {
+        id: 2,
+        name: "Samsung Galaxy S23 Ultra",
+        category: "mobile",
+        price: 125999,
+        originalPrice: 139999,
+        image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        rating: 5.0,
+        reviews: 89,
+        stock: "low",
+        description: "200MP ক্যামেরা, Snapdragon 8 Gen 2 প্রসেসর, 12GB RAM, 256GB স্টোরেজ সহ Samsung Galaxy S23 Ultra স্মার্টফোন।",
+        specs: [
+            "ডিসপ্লে: 6.8-inch Dynamic AMOLED 2X",
+            "প্রসেসর: Snapdragon 8 Gen 2",
+            "র‍্যাম: 12GB",
+            "স্টোরেজ: 256GB",
+            "ব্যাটারি: 5000mAh"
+        ]
+    },
+    {
+        id: 3,
+        name: "পুরুষদের কটন শার্ট",
+        category: "fashion",
+        price: 1299,
+        originalPrice: 2599,
+        image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        rating: 4.0,
+        reviews: 56,
+        stock: "in",
+        description: "১০০% কটন, রেগুলার ফিট, ফুল স্লিভ পুরুষদের ফরমাল শার্ট। বিভিন্ন কালারে উপলব্ধ।",
+        specs: [
+            "ফেব্রিক: 100% কটন",
+            "ফিট: রেগুলার",
+            "কালার: নীল, সাদা, কালো",
+            "সাইজ: S, M, L, XL, XXL",
+            "কেয়ার: মেশিন ওয়াশ"
+        ]
+    },
+    {
+        id: 4,
+        name: "ফিলিপস মিক্সার গ্রাইন্ডার",
+        category: "home",
+        price: 4599,
+        originalPrice: 5999,
+        image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        rating: 4.5,
+        reviews: 203,
+        stock: "in",
+        description: "500 ওয়াট মোটর, 3 স্টেইনলেস স্টিল জার, ৩ বছরের ওয়ারেন্টি সহ ফিলিপস মিক্সার গ্রাইন্ডার।",
+        specs: [
+            "মোটর: 500 ওয়াট",
+            "জার: 3 স্টেইনলেস স্টিল জার",
+            "স্পিড: 3 স্পিড সেটিংস",
+            "ওয়ারেন্টি: 3 বছর",
+            "অতিরিক্ত: ড্রাই গ্রাইন্ডিং ব্লেড"
+        ]
+    }
+];
+
+// Cart Data
+let cart = [];
+let favorites = [];
+
+// Mobile Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
+// Scroll to Top Button
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('active');
+    } else {
+        scrollTopBtn.classList.remove('active');
+    }
+});
+
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Scroll Reveal Animation
+const reveals = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+reveals.forEach(reveal => {
+    revealObserver.observe(reveal);
+});
+
+// Smooth Scrolling for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Notification Toast Function
+function showNotification(message, type = 'success') {
+    const toast = document.getElementById('notificationToast');
+    const toastMessage = document.getElementById('toastMessage');
+    const toastIcon = document.getElementById('toastIcon');
+    
+    toastMessage.textContent = message;
+    
+    // Set icon based on type
+    if (type === 'success') {
+        toastIcon.className = 'fas fa-check-circle';
+        toast.classList.remove('error', 'warning');
+    } else if (type === 'error') {
+        toastIcon.className = 'fas fa-exclamation-circle';
+        toast.classList.add('error');
+        toast.classList.remove('warning');
+    } else if (type === 'warning') {
+        toastIcon.className = 'fas fa-exclamation-triangle';
+        toast.classList.add('warning');
+        toast.classList.remove('error');
+    }
+    
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+// Cart Functions
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    
+    if (!product) {
+        showNotification('প্রোডাক্টটি পাওয়া যায়নি!', 'error');
+        return;
+    }
+    
+    // Check if product already in cart
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            ...product,
+            quantity: 1
+        });
+    }
+    
+    updateCartCount();
+    showNotification(`${product.name} কার্টে যোগ করা হয়েছে!`);
+    
+    // Update button text
+    const addToCartBtn = event.target.closest('.btn-add-to-cart');
+    if (addToCartBtn) {
+        const originalText = addToCartBtn.innerHTML;
+        addToCartBtn.innerHTML = '<i class="fas fa-check"></i> যোগ করা হয়েছে';
+        addToCartBtn.classList.add('added');
+        
+        setTimeout(() => {
+            addToCartBtn.innerHTML = originalText;
+            addToCartBtn.classList.remove('added');
+        }, 2000);
+    }
+}
+
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    updateCartCount();
+    updateCartModal();
+    showNotification('প্রোডাক্টটি কার্ট থেকে সরানো হয়েছে', 'warning');
+}
+
+function updateCartCount() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCount = document.querySelector('.cart-count');
+    cartCount.textContent = totalItems;
+    
+    // Update cart modal if open
+    if (document.getElementById('cartModal').classList.contains('active')) {
+        updateCartModal();
+    }
+}
+
+function updateCartModal() {
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartSummary = document.getElementById('cartSummary');
+    
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>আপনার কার্টটি খালি</p>
+                <a href="products.html" class="btn-buy-now">শপিং শুরু করুন</a>
+            </div>
+        `;
+        cartSummary.style.display = 'none';
+        return;
+    }
+    
+    // Clear cart items
+    cartItemsContainer.innerHTML = '';
+    
+    let subtotal = 0;
+    
+    // Add each cart item
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+            <div class="cart-item-img">
+                <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="cart-item-info">
+                <div class="cart-item-title">${item.name}</div>
+                <div class="cart-item-price">৳${item.price.toLocaleString()}</div>
+            </div>
+            <div class="cart-item-actions">
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, ${item.quantity - 1})">-</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                </div>
+                <button class="remove-item" onclick="removeFromCart(${item.id})">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+    });
+    
+    // Update summary
+    const deliveryCharge = 60;
+    const total = subtotal + deliveryCharge;
+    
+    document.getElementById('cartSubtotal').textContent = subtotal.toLocaleString();
+    document.getElementById('deliveryCharge').textContent = deliveryCharge.toLocaleString();
+    document.getElementById('cartTotal').textContent = total.toLocaleString();
+    
+    cartSummary.style.display = 'block';
+}
+
+function updateCartQuantity(productId, newQuantity) {
+    if (newQuantity < 1) {
+        removeFromCart(productId);
+        return;
+    }
+    
+    const item = cart.find(item => item.id === productId);
+    if (item) {
+        item.quantity = newQuantity;
+        updateCartCount();
+    }
+}
+
+// Cart Modal Functions
+function openCartModal() {
+    document.getElementById('cartModal').classList.add('active');
+    updateCartModal();
+}
+
+function closeCartModal() {
+    document.getElementById('cartModal').classList.remove('active');
+}
+
+// Cart button click event
+document.getElementById('cartBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    openCartModal();
+});
+
+// Favorite Functions
+function toggleFavorite(button) {
+    const productCard = button.closest('.product-card');
+    const productId = parseInt(productCard.dataset.productId) || 
+                     Array.from(document.querySelectorAll('.product-card')).indexOf(productCard) + 1;
+    
+    const product = products.find(p => p.id === productId);
+    
+    if (!product) return;
+    
+    const index = favorites.indexOf(productId);
+    
+    if (index === -1) {
+        // Add to favorites
+        favorites.push(productId);
+        button.classList.add('active');
+        showNotification(`${product.name} ফেভারিটে যোগ করা হয়েছে!`);
+    } else {
+        // Remove from favorites
+        favorites.splice(index, 1);
+        button.classList.remove('active');
+        showNotification(`${product.name} ফেভারিট থেকে সরানো হয়েছে`, 'warning');
+    }
+    
+    updateFavoriteCount();
+}
+
+function updateFavoriteCount() {
+    const favoriteCount = document.querySelector('.favorite-count');
+    favoriteCount.textContent = favorites.length;
+}
+
+// Favorites button click event
+document.getElementById('favoritesBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (favorites.length === 0) {
+        showNotification('আপনার ফেভারিট তালিকায় কোন প্রোডাক্ট নেই', 'warning');
+    } else {
+        showNotification(`আপনার ফেভারিট তালিকায় ${favorites.length} টি প্রোডাক্ট আছে`);
+    }
+});
+
+// Product Filter
+document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filter = button.dataset.filter;
+        
+        // Filter products
+        document.querySelectorAll('.product-card').forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 10);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+    });
+});
+
+// Quick View Function
+function quickView(productId) {
+    const product = products.find(p => p.id === productId);
+    
+    if (!product) {
+        showNotification('প্রোডাক্ট ডিটেইলস লোড করা যায়নি!', 'error');
+        return;
+    }
+    
+    const modalContent = document.getElementById('quickViewContent');
+    
+    // Create stock status text
+    let stockText = '';
+    let stockClass = '';
+    
+    if (product.stock === 'in') {
+        stockText = 'স্টকে আছে';
+        stockClass = 'product-stock';
+    } else if (product.stock === 'low') {
+        stockText = 'শেষ হচ্ছে';
+        stockClass = 'product-stock low';
+    } else {
+        stockText = 'স্টকে নেই';
+        stockClass = 'product-stock out';
+    }
+    
+    modalContent.innerHTML = `
+        <div class="product-details-container" style="grid-template-columns: 1fr; gap: 30px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div class="product-main-image">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div>
+                    <div class="product-category">${product.category === 'electronics' ? 'ইলেকট্রনিক্স' : 
+                      product.category === 'mobile' ? 'মোবাইল ফোন' : 
+                      product.category === 'fashion' ? 'ফ্যাশন' : 
+                      product.category === 'home' ? 'হোম অ্যাপ্লায়েন্স' : product.category}</div>
+                    <h2 class="product-title" style="font-size: 1.5rem;">${product.name}</h2>
+                    <div class="product-rating">
+                        ${getStarRating(product.rating)}
+                        <span>(${product.rating})</span>
+                        <span style="color: var(--gray); margin-left: 10px;">${product.reviews} রিভিউ</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">৳${product.price.toLocaleString()}</span>
+                        ${product.originalPrice > product.price ? 
+                          `<span class="original-price">৳${product.originalPrice.toLocaleString()}</span>
+                           <span class="discount">${Math.round((1 - product.price/product.originalPrice) * 100)}% ছাড়</span>` : ''}
+                    </div>
+                    <div class="product-description">
+                        ${product.description}
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button onclick="decreaseQuantity()">-</button>
+                            <input type="text" value="1" id="quickViewQuantity" readonly>
+                            <button onclick="increaseQuantity()">+</button>
+                        </div>
+                        <div class="product-buttons">
+                            <button class="btn-buy-now" onclick="addToCartFromQuickView(${product.id})">
+                                <i class="fas fa-cart-plus"></i> কার্টে যোগ
+                            </button>
+                            <button class="btn-buy-now" style="background: var(--success);" onclick="buyNow(${product.id})">
+                                <i class="fas fa-bolt"></i> এখন কিনুন
+                            </button>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <span class="${stockClass}">${stockText}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-specs">
+                <h4>স্পেসিফিকেশন</h4>
+                <ul>
+                    ${product.specs.map(spec => `<li><i class="fas fa-check"></i> ${spec}</li>`).join('')}
+                </ul>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('quickViewModal').classList.add('active');
+}
+
+function getStarRating(rating) {
+    let stars = '';
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    
+    for (let i = 0; i < fullStars; i++) {
+        stars += '<i class="fas fa-star"></i>';
+    }
+    
+    if (hasHalfStar) {
+        stars += '<i class="fas fa-star-half-alt"></i>';
+    }
+    
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    for (let i = 0; i < emptyStars; i++) {
+        stars += '<i class="far fa-star"></i>';
+    }
+    
+    return stars;
+}
+
+function closeQuickViewModal() {
+    document.getElementById('quickViewModal').classList.remove('active');
+}
+
+function increaseQuantity() {
+    const quantityInput = document.getElementById('quickViewQuantity');
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+}
+
+function decreaseQuantity() {
+    const quantityInput = document.getElementById('quickViewQuantity');
+    if (parseInt(quantityInput.value) > 1) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+    }
+}
+
+function addToCartFromQuickView(productId) {
+    const quantity = parseInt(document.getElementById('quickViewQuantity').value);
+    const product = products.find(p => p.id === productId);
+    
+    if (!product) return;
+    
+    // Check if product already in cart
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({
+            ...product,
+            quantity: quantity
+        });
+    }
+    
+    updateCartCount();
+    showNotification(`${product.name} (${quantity} টি) কার্টে যোগ করা হয়েছে!`);
+    closeQuickViewModal();
+}
+
+function buyNow(productId) {
+    addToCartFromQuickView(productId);
+    setTimeout(() => {
+        closeQuickViewModal();
+        openCartModal();
+    }, 500);
+}
+
+// Close modals when clicking outside
+window.addEventListener('click', (e) => {
+    const cartModal = document.getElementById('cartModal');
+    const quickViewModal = document.getElementById('quickViewModal');
+    
+    if (e.target === cartModal) {
+        closeCartModal();
+    }
+    
+    if (e.target === quickViewModal) {
+        closeQuickViewModal();
+    }
+});
+
+// Initialize cart and favorites count
+function initializeApp() {
+    // Add product IDs to product cards
+    document.querySelectorAll('.product-card').forEach((card, index) => {
+        if (index < products.length) {
+            card.dataset.productId = products[index].id;
+        }
+    });
+    
+    updateCartCount();
+    updateFavoriteCount();
+    
+    // Show welcome notification
+    setTimeout(() => {
+        showNotification('HB Store এ স্বাগতম! সেরা দামে সেরা প্রোডাক্ট কিনুন।');
+    }, 1000);
+}
+
+// Initialize the app when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeApp);
+</script>
+</body>
+</html>
