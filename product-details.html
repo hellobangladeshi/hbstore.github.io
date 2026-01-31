@@ -4,16 +4,417 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Samsung Galaxy S23 Ultra - HB Store</title>
+<meta name="description" content="Samsung Galaxy S23 Ultra - 200MP ক্যামেরা, Snapdragon 8 Gen 2, 12GB RAM, 256GB Storage">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+    /* Product Details Specific Styles */
+    .product-details-page {
+        padding: 80px 0;
+    }
+    
+    .breadcrumb {
+        margin-bottom: 30px;
+        font-size: 0.9rem;
+        color: var(--gray);
+    }
+    
+    .breadcrumb a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+        text-decoration: underline;
+    }
+    
+    .breadcrumb span {
+        color: var(--dark);
+        font-weight: 600;
+    }
+    
+    .product-details-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 60px;
+    }
+    
+    .product-gallery {
+        position: sticky;
+        top: 100px;
+    }
+    
+    .product-main-image {
+        background: #f8fafc;
+        border-radius: 15px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        margin-bottom: 20px;
+        border: 1px solid var(--gray-light);
+    }
+    
+    .product-main-image img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .product-thumbnails {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .product-thumbnail {
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
+        background: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .product-thumbnail.active {
+        border-color: var(--primary);
+    }
+    
+    .product-thumbnail img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .product-info-section .product-category {
+        font-size: 0.9rem;
+        color: var(--gray);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    
+    .product-info-section .product-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--dark);
+        line-height: 1.3;
+    }
+    
+    .product-info-section .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 20px;
+        color: var(--warning);
+    }
+    
+    .product-info-section .product-price {
+        margin-bottom: 25px;
+    }
+    
+    .product-info-section .current-price {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+    
+    .product-description {
+        margin-bottom: 30px;
+        line-height: 1.8;
+        color: var(--dark);
+    }
+    
+    .product-specs {
+        margin-bottom: 30px;
+    }
+    
+    .product-specs h4 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: var(--dark);
+    }
+    
+    .product-specs ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    .product-specs li {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .product-specs li i {
+        color: var(--primary);
+        font-size: 0.9rem;
+    }
+    
+    .product-actions {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+        align-items: center;
+    }
+    
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+        background: #f1f5f9;
+        border-radius: 50px;
+        overflow: hidden;
+    }
+    
+    .quantity-selector button {
+        background: none;
+        border: none;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--dark);
+        transition: all 0.3s ease;
+    }
+    
+    .quantity-selector button:hover {
+        background: var(--primary);
+        color: white;
+    }
+    
+    .quantity-selector input {
+        width: 60px;
+        border: none;
+        background: none;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .product-buttons {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .product-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid var(--gray-light);
+    }
+    
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .meta-item i {
+        color: var(--primary);
+        font-size: 1.2rem;
+    }
+    
+    /* Product Tabs */
+    .product-tabs {
+        margin: 60px 0;
+    }
+    
+    .tab-buttons {
+        display: flex;
+        border-bottom: 2px solid var(--gray-light);
+        margin-bottom: 30px;
+    }
+    
+    .tab-btn {
+        padding: 15px 30px;
+        background: none;
+        border: none;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--gray);
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .tab-btn.active {
+        color: var(--primary);
+    }
+    
+    .tab-btn.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+    }
+    
+    .tab-content {
+        display: none;
+        padding: 30px;
+        background: white;
+        border-radius: 15px;
+        border: 1px solid var(--gray-light);
+    }
+    
+    .tab-content.active {
+        display: block;
+    }
+    
+    .reviews-grid {
+        display: grid;
+        gap: 20px;
+    }
+    
+    .review-item {
+        padding: 20px;
+        border: 1px solid var(--gray-light);
+        border-radius: 10px;
+    }
+    
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .review-author {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .review-author-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+    }
+    
+    .review-text {
+        line-height: 1.6;
+        color: var(--dark);
+    }
+    
+    /* Related Products */
+    .related-products {
+        padding: 60px 0;
+        background: #f1f5f9;
+    }
+    
+    .related-products h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: var(--dark);
+    }
+    
+    @media (max-width: 992px) {
+        .product-details-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        .product-gallery {
+            position: static;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .product-info-section .product-title {
+            font-size: 1.5rem;
+        }
+        
+        .product-info-section .current-price {
+            font-size: 1.5rem;
+        }
+        
+        .product-actions {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .product-buttons {
+            width: 100%;
+        }
+        
+        .tab-buttons {
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
-    <!-- Header code same as products.html -->
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <div class="logo-icon">HB</div>
+                <div class="logo-text">
+                    <h3>HB Store</h3>
+                    <span>প্রোডাক্ট ডিটেইলস</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="products.html"><i class="fas fa-shopping-bag"></i> প্রোডাক্ট</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> কার্ট</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> আমাদের সম্পর্কে</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icons">
+                    <a href="#" class="nav-icon favorite-icon">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorite-count">3</span>
+                    </a>
+                    <a href="cart.html" class="nav-icon cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">2</span>
+                    </a>
+                </div>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 
+<!-- Product Details -->
 <section class="product-details-page">
     <div class="container">
         <!-- Breadcrumb -->
@@ -27,40 +428,376 @@
         <div class="product-details-container">
             <!-- Product Gallery -->
             <div class="product-gallery">
-                <!-- Main Image -->
-                <!-- Thumbnails -->
+                <div class="product-main-image">
+                    <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Samsung Galaxy S23 Ultra" id="mainProductImage">
+                </div>
+                <div class="product-thumbnails">
+                    <div class="product-thumbnail active" onclick="changeImage('https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                        <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Front View">
+                    </div>
+                    <div class="product-thumbnail" onclick="changeImage('https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                        <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Back View">
+                    </div>
+                    <div class="product-thumbnail" onclick="changeImage('https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Side View">
+                    </div>
+                    <div class="product-thumbnail" onclick="changeImage('https://images.unsplash.com/photo-1592910147754-5c2d217c8261?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                        <img src="https://images.unsplash.com/photo-1592910147754-5c2d217c8261?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Camera">
+                    </div>
+                </div>
             </div>
             
             <!-- Product Info -->
             <div class="product-info-section">
-                <!-- Product Title, Price, Rating -->
-                <!-- Description -->
-                <!-- Specifications -->
-                <!-- Add to Cart Button -->
-                <!-- Product Meta -->
+                <div class="product-category">মোবাইল ফোন</div>
+                <h1 class="product-title">Samsung Galaxy S23 Ultra</h1>
+                
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>৪.৭ রেটিং (১২৪ রিভিউ)</span>
+                </div>
+                
+                <div class="product-price">
+                    <span class="current-price">৳১,২৫,৯৯৯</span>
+                    <span class="original-price">৳১,৩৯,৯৯৯</span>
+                    <span class="discount">১০% ছাড়</span>
+                </div>
+                
+                <p class="product-description">
+                    Samsung Galaxy S23 Ultra - 200MP ক্যামেরা, Snapdragon 8 Gen 2 প্রসেসর, 12GB RAM, 256GB স্টোরেজ সহ স্মার্টফোন। 
+                    6.8-inch Dynamic AMOLED 2X ডিসপ্লে, 5000mAh ব্যাটারি এবং S Pen সাপোর্ট। পারফেক্ট ফর প্রফেশনাল ফটোগ্রাফি এবং গেমিং।
+                </p>
+                
+                <div class="product-specs">
+                    <h4>স্পেসিফিকেশন</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> ডিসপ্লে: 6.8-inch Dynamic AMOLED 2X</li>
+                        <li><i class="fas fa-check"></i> প্রসেসর: Snapdragon 8 Gen 2</li>
+                        <li><i class="fas fa-check"></i> র‍্যাম: 12GB LPDDR5X</li>
+                        <li><i class="fas fa-check"></i> স্টোরেজ: 256GB UFS 4.0</li>
+                        <li><i class="fas fa-check"></i> ক্যামেরা: 200MP + 12MP + 10MP + 10MP</li>
+                        <li><i class="fas fa-check"></i> ব্যাটারি: 5000mAh, 45W ফাস্ট চার্জিং</li>
+                        <li><i class="fas fa-check"></i ওজন: 234 গ্রাম</li>
+                    </ul>
+                </div>
+                
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button type="button" onclick="decreaseQuantity()">-</button>
+                        <input type="text" value="1" id="productQuantity" readonly>
+                        <button type="button" onclick="increaseQuantity()">+</button>
+                    </div>
+                    
+                    <div class="product-buttons">
+                        <button class="btn-buy-now" onclick="addToCart()">
+                            <i class="fas fa-cart-plus"></i> কার্টে যোগ করুন
+                        </button>
+                        <button class="btn-buy-now" style="background: var(--success);" onclick="buyNow()">
+                            <i class="fas fa-bolt"></i> এখন কিনুন
+                        </button>
+                        <button class="btn-buy-now" style="background: var(--warning);" onclick="addToWishlist()">
+                            <i class="fas fa-heart"></i> উইশলিস্ট
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-truck"></i>
+                        <div>
+                            <strong>ডেলিভারি</strong>
+                            <p>ঢাকায় ২৪ ঘণ্টা, সারা দেশে ৩-৫ দিন</p>
+                        </div>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <strong>ওয়ারেন্টি</strong>
+                            <p>২ বছরের কোম্পানি ওয়ারেন্টি</p>
+                        </div>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-undo-alt"></i>
+                        <div>
+                            <strong>রিটার্ন পলিসি</strong>
+                            <p>৭ দিনের মধ্যে সহজ রিটার্ন</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
         <!-- Product Tabs -->
         <div class="product-tabs">
-            <!-- Description Tab -->
-            <!-- Specifications Tab -->
-            <!-- Reviews Tab -->
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="description">বর্ণনা</button>
+                <button class="tab-btn" data-tab="specs">স্পেসিফিকেশন</button>
+                <button class="tab-btn" data-tab="reviews">রিভিউ</button>
+                <button class="tab-btn" data-tab="shipping">ডেলিভারি</button>
+            </div>
+            
+            <div class="tab-content active" id="descriptionTab">
+                <h3>বিস্তারিত বর্ণনা</h3>
+                <p>Samsung Galaxy S23 Ultra হল Samsung এর ফ্ল্যাগশিপ স্মার্টফোন যা ২০০ মেগাপিক্সেল ক্যামেরা সিস্টেম নিয়ে এসেছে। এটি Snapdragon 8 Gen 2 প্রসেসর দিয়ে পাওয়ারড যা দক্ষতা এবং শক্তি দক্ষতার নতুন মান নির্ধারণ করে।</p>
+                
+                <h4>ক্যামেরা ফিচার</h4>
+                <ul>
+                    <li>২০০MP অ্যাডাপ্টিভ পিক্সেল মেইন ক্যামেরা</li>
+                    <li>১২MP আল্ট্রা-ওয়াইড ক্যামেরা</li>
+                    <li>১০MP টেলিফটো ক্যামেরা (৩x অপটিক্যাল জুম)</li>
+                    <li>১০MP পেরিস্কোপ টেলিফটো ক্যামেরা (১০x অপটিক্যাল জুম)</li>
+                    <li>নাইটোগ্রাফি এবং এক্সপার্ট র' ফিচার</li>
+                </ul>
+                
+                <h4>ডিসপ্লে</h4>
+                <p>৬.৮-ইঞ্চি ডায়নামিক AMOLED 2X ডিসপ্লে, 120Hz রিফ্রেশ রেট, HDR10+ সাপোর্ট, এবং 1750 nits পিক ব্রাইটনেস সহ।</p>
+            </div>
+            
+            <div class="tab-content" id="specsTab">
+                <h3>সম্পূর্ণ স্পেসিফিকেশন</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>ডিসপ্লে</strong></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">6.8-inch Dynamic AMOLED 2X</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>রেজোলিউশন</strong></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">1440 x 3088 pixels</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>প্রসেসর</strong></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">Snapdragon 8 Gen 2</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>র‍্যাম</strong></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">12GB</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>স্টোরেজ</strong></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">256GB</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>ব্যাটারি</strong></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">5000mAh</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>চার্জিং</strong></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">45W Fast Charging</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="tab-content" id="reviewsTab">
+                <h3>গ্রাহক রিভিউ</h3>
+                <div class="reviews-grid">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="review-author-avatar">আ</div>
+                                <div>
+                                    <strong>আহমেদ হোসেন</strong>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <span>২ সপ্তাহ আগে</span>
+                        </div>
+                        <p class="review-text">অসাধারণ ফোন! ক্যামেরা কোয়ালিটি এবং ব্যাটারি লাইফ দুর্দান্ত। সারাদিন ব্যবহার করলেও চার্জ দিতে হয় না।</p>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="review-author-avatar">স</div>
+                                <div>
+                                    <strong>সাদিয়া আক্তার</strong>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <span>১ মাস আগে</span>
+                        </div>
+                        <p class="review-text">ভাল ফোন তবে দাম একটু বেশি মনে হচ্ছে। পারফরম্যান্স খুব ভালো।</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="shippingTab">
+                <h3>ডেলিভারি পলিসি</h3>
+                <ul>
+                    <li><strong>ঢাকা শহরে:</strong> ২৪ ঘন্টার মধ্যে ডেলিভারি</li>
+                    <li><strong>অন্যান্য বিভাগীয় শহরে:</strong> ২-৩ কার্যদিবস</li>
+                    <li><strong>জেলা শহরে:</strong> ৩-৫ কার্যদিবস</li>
+                    <li><strong>গ্রামাঞ্চলে:</strong> ৫-৭ কার্যদিবস</li>
+                </ul>
+                <p><strong>ডেলিভারি চার্জ:</strong> ঢাকায় ৬০ টাকা, অন্যান্য স্থানে ১২০ টাকা</p>
+            </div>
         </div>
         
         <!-- Related Products -->
         <section class="related-products">
             <div class="container">
                 <h2>সম্পর্কিত প্রোডাক্ট</h2>
-                <!-- Related Products Grid -->
+                <div class="products-grid" style="margin-top: 30px;">
+                    <!-- Related Product 1 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Pro">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">মোবাইল ফোন</div>
+                            <h3 class="product-title">iPhone 14 Pro</h3>
+                            <div class="product-price">
+                                <span class="current-price">৳১,৪৯,৯৯৯</span>
+                            </div>
+                            <button class="btn-add-to-cart">কার্টে যোগ</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Related Product 2 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1592910147754-5c2d217c8261?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="OnePlus 11">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">মোবাইল ফোন</div>
+                            <h3 class="product-title">OnePlus 11 5G</h3>
+                            <div class="product-price">
+                                <span class="current-price">৳৮৯,৯৯৯</span>
+                            </div>
+                            <button class="btn-add-to-cart">কার্টে যোগ</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Related Product 3 -->
+                    <div class="product-card">
+                        <div class="product-badge new">নতুন</div>
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Google Pixel 7">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">মোবাইল ফোন</div>
+                            <h3 class="product-title">Google Pixel 7 Pro</h3>
+                            <div class="product-price">
+                                <span class="current-price">৳৯৫,৯৯৯</span>
+                            </div>
+                            <button class="btn-add-to-cart">কার্টে যোগ</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
 </section>
 
+<!-- Footer -->
 <footer>
-    <!-- Footer code same as products.html -->
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>HB Store</h4>
+                <p>বাংলাদেশের বিশ্বস্ত অনলাইন শপিং প্ল্যাটফর্ম</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>যোগাযোগ</h4>
+                <p><i class="fas fa-phone"></i> +৮৮০ ১৭১২-৩৪৫৬৭৮</p>
+                <p><i class="fas fa-envelope"></i> support@hbstore.com</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© ২০২৪ HB Store. সকল অধিকার সংরক্ষিত।</p>
+        </div>
+    </div>
 </footer>
 
+<script src="js/main.js"></script>
+<script>
+// Product Details Page JavaScript
+function changeImage(src) {
+    document.getElementById('mainProductImage').src = src;
+    
+    // Update thumbnail active state
+    document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+        thumb.classList.remove('active');
+        if (thumb.querySelector('img').src === src) {
+            thumb.classList.add('active');
+        }
+    });
+}
+
+function decreaseQuantity() {
+    const quantityInput = document.getElementById('productQuantity');
+    if (parseInt(quantityInput.value) > 1) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+    }
+}
+
+function increaseQuantity() {
+    const quantityInput = document.getElementById('productQuantity');
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+}
+
+function addToCart() {
+    const quantity = document.getElementById('productQuantity').value;
+    alert(`${quantity} টি Samsung Galaxy S23 Ultra কার্টে যোগ করা হয়েছে!`);
+    // Implement actual cart functionality
+}
+
+function buyNow() {
+    addToCart();
+    window.location.href = 'checkout.html';
+}
+
+function addToWishlist() {
+    alert('প্রোডাক্টটি উইশলিস্টে যোগ করা হয়েছে!');
+}
+
+// Tab Switching
+document.querySelectorAll('.tab-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        // Remove active class from all buttons and content
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Show corresponding content
+        const tabId = this.dataset.tab;
+        document.getElementById(tabId + 'Tab').classList.add('active');
+    });
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+});
+</script>
 </body>
 </html>
