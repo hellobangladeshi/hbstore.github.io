@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>শপিং কার্ট - HB Store</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+    /* Cart Page Specific Styles */
+    .cart-page {
+        padding: 80px 0;
+        min-height: 60vh;
+    }
+    
+    .page-title {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    
+    .page-title h1 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 10px;
+    }
+    
+    .page-title p {
+        color: var(--gray);
+        font-size: 1.1rem;
+    }
+    
+    .cart-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+    }
+    
+    .cart-items-container {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        border: 1px solid var(--gray-light);
+    }
+    
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .cart-table th {
+        text-align: left;
+        padding: 15px 0;
+        border-bottom: 2px solid var(--gray-light);
+        color: var(--dark);
+        font-weight: 600;
+    }
+    
+    .cart-table td {
+        padding: 20px 0;
+        border-bottom: 1px solid var(--gray-light);
+        vertical-align: middle;
+    }
+    
+    .cart-product {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .cart-product-img {
+        width: 80px;
+        height: 80px;
+        background: #f8fafc;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+    
+    .cart-product-img img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .cart-product-info h4 {
+        font-size: 1rem;
+        margin-bottom: 5px;
+        color: var(--dark);
+    }
+    
+    .cart-product-info p {
+        color: var(--gray);
+        font-size: 0.9rem;
+    }
+    
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #f1f5f9;
+        padding: 5px 10px;
+        border-radius: 20px;
+        width: fit-content;
+    }
+    
+    .quantity-btn {
+        background: none;
+        border: none;
+        color: var(--dark);
+        cursor: pointer;
+        font-size: 1.2rem;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    
+    .quantity-btn:hover {
+        background: var(--primary);
+        color: white;
+    }
+    
+    .quantity-input {
+        width: 40px;
+        border: none;
+        background: none;
+        text-align: center;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .remove-btn {
+        background: none;
+        border: none;
+        color: var(--danger);
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .remove-btn:hover {
+        transform: scale(1.1);
+    }
+    
+    .cart-summary {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        border: 1px solid var(--gray-light);
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+    }
+    
+    .cart-summary h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: var(--dark);
+    }
+    
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--gray-light);
+    }
+    
+    .summary-row.total {
+        border-bottom: none;
+        padding-top: 15px;
+        margin-top: 15px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+        border-top: 2px solid var(--gray-light);
+    }
+    
+    .checkout-btn {
+        width: 100%;
+        padding: 15px;
+        background: var(--gradient);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .checkout-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(239, 4, 121, 0.3);
+    }
+    
+    .continue-shopping {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        margin-top: 15px;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+    }
+    
+    .empty-cart {
+        text-align: center;
+        padding: 60px 20px;
+    }
+    
+    .empty-cart i {
+        font-size: 4rem;
+        color: var(--gray-light);
+        margin-bottom: 20px;
+    }
+    
+    .empty-cart h3 {
+        color: var(--dark);
+        margin-bottom: 10px;
+    }
+    
+    .empty-cart p {
+        color: var(--gray);
+        margin-bottom: 30px;
+    }
+    
+    .cart-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid var(--gray-light);
+    }
+    
+    .clear-cart-btn {
+        padding: 12px 25px;
+        background: var(--danger);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .clear-cart-btn:hover {
+        background: #dc2626;
+        transform: translateY(-2px);
+    }
+    
+    .update-cart-btn {
+        padding: 12px 25px;
+        background: var(--success);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .update-cart-btn:hover {
+        background: #0da271;
+        transform: translateY(-2px);
+    }
+    
+    @media (max-width: 992px) {
+        .cart-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .cart-summary {
+            position: static;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .cart-table {
+            display: block;
+            overflow-x: auto;
+        }
+        
+        .cart-table th,
+        .cart-table td {
+            min-width: 150px;
+        }
+        
+        .cart-actions {
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .clear-cart-btn,
+        .update-cart-btn {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <div class="logo-icon">HB</div>
+                <div class="logo-text">
+                    <h3>HB Store</h3>
+                    <span>শপিং কার্ট</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="products.html"><i class="fas fa-shopping-bag"></i> প্রোডাক্ট</a></li>
+                <li><a href="cart.html" class="active"><i class="fas fa-shopping-cart"></i> কার্ট</a></li>
+                <li><a href="checkout.html"><i class="fas fa-credit-card"></i> চেকআউট</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">2</span>
+                    </a>
+                </div>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Cart Page -->
+<section class="cart-page">
+    <div class="container">
+        <div class="page-title">
+            <h1>আপনার শপিং কার্ট</h1>
+            <p>আপনার নির্বাচিত প্রোডাক্টসমূহ</p>
+        </div>
+        
+        <div class="cart-container">
+            <!-- Cart Items -->
+            <div class="cart-items-container">
+                <div class="cart-content" id="cartContent">
+                    <!-- Cart items will be loaded here -->
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>প্রোডাক্ট</th>
+                                <th>দাম</th>
+                                <th>পরিমাণ</th>
+                                <th>মোট</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItems">
+                            <!-- Cart items will be dynamically added -->
+                            <tr>
+                                <td>
+                                    <div class="cart-product">
+                                        <div class="cart-product-img">
+                                            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Samsung Galaxy S23 Ultra">
+                                        </div>
+                                        <div class="cart-product-info">
+                                            <h4>Samsung Galaxy S23 Ultra</h4>
+                                            <p>কালার: Phantom Black</p>
+                                            <p>স্টোরেজ: 256GB</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>৳১,২৫,৯৯৯</td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn minus">-</button>
+                                        <input type="text" class="quantity-input" value="1" readonly>
+                                        <button class="quantity-btn plus">+</button>
+                                    </div>
+                                </td>
+                                <td>৳১,২৫,৯৯৯</td>
+                                <td>
+                                    <button class="remove-btn">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <div class="cart-product">
+                                        <div class="cart-product-img">
+                                            <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Dell XPS 13">
+                                        </div>
+                                        <div class="cart-product-info">
+                                            <h4>Dell XPS 13 ল্যাপটপ</h4>
+                                            <p>র‍্যাম: 16GB</p>
+                                            <p>SSD: 512GB</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>৳৮৫,৯৯৯</td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn minus">-</button>
+                                        <input type="text" class="quantity-input" value="1" readonly>
+                                        <button class="quantity-btn plus">+</button>
+                                    </div>
+                                </td>
+                                <td>৳৮৫,৯৯৯</td>
+                                <td>
+                                    <button class="remove-btn">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="cart-actions">
+                        <button class="clear-cart-btn" onclick="clearCart()">
+                            <i class="fas fa-trash"></i> কার্ট খালি করুন
+                        </button>
+                        <button class="update-cart-btn" onclick="updateCart()">
+                            <i class="fas fa-sync-alt"></i> কার্ট আপডেট করুন
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <h3>অর্ডার সামারি</h3>
+                
+                <div class="summary-row">
+                    <span>সাবটোটাল</span>
+                    <span>৳২,১১,৯৯৮</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span>ডেলিভারি চার্জ</span>
+                    <span>৳৬০</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span>ট্যাক্স (১৫%)</span>
+                    <span>৳৩১,৭৯৯</span>
+                </div>
+                
+                <div class="summary-row total">
+                    <span>মোট</span>
+                    <span>৳২,৪৩,৮৫৭</span>
+                </div>
+                
+                <button class="checkout-btn" onclick="window.location.href='checkout.html'">
+                    <i class="fas fa-credit-card"></i> চেকআউট করুন
+                </button>
+                
+                <a href="products.html" class="continue-shopping">
+                    <i class="fas fa-arrow-left"></i> শপিং চালিয়ে যান
+                </a>
+                
+                <div class="payment-methods" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--gray-light);">
+                    <h4 style="margin-bottom: 10px; font-size: 1rem;">পেমেন্ট অপশন</h4>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/bKash.svg" alt="bKash" style="height: 30px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Nagad_logo.png" alt="Nagad" style="height: 30px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" style="height: 30px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" style="height: 30px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>HB Store</h4>
+                <p>বাংলাদেশের বিশ্বস্ত অনলাইন শপিং প্ল্যাটফর্ম</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>যোগাযোগ</h4>
+                <p><i class="fas fa-phone"></i> +৮৮০ ১৭১২-৩৪৫৬৭৮</p>
+                <p><i class="fas fa-envelope"></i> support@hbstore.com</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>কার্ট সম্পর্কিত</h4>
+                <ul class="footer-links">
+                    <li><a href="checkout.html"><i class="fas fa-chevron-right"></i> চেকআউট</a></li>
+                    <li><a href="refund.html"><i class="fas fa-chevron-right"></i> রিফান্ড পলিসি</a></li>
+                    <li><a href="terms.html"><i class="fas fa-chevron-right"></i> শর্তাবলী</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© ২০২৪ HB Store. সকল অধিকার সংরক্ষিত।</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+// Cart Page JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Quantity controls
+    document.querySelectorAll('.quantity-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const quantityControl = this.closest('.quantity-control');
+            const input = quantityControl.querySelector('.quantity-input');
+            let value = parseInt(input.value);
+            
+            if (this.classList.contains('minus') && value > 1) {
+                input.value = value - 1;
+            } else if (this.classList.contains('plus')) {
+                input.value = value + 1;
+            }
+            
+            updateCartTotal();
+        });
+    });
+    
+    // Remove buttons
+    document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const row = this.closest('tr');
+            row.style.opacity = '0';
+            setTimeout(() => {
+                row.remove();
+                updateCartTotal();
+                checkEmptyCart();
+            }, 300);
+        });
+    });
+    
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+});
+
+function updateCartTotal() {
+    // Calculate total
+    let subtotal = 0;
+    document.querySelectorAll('tbody tr').forEach(row => {
+        const price = parseFloat(row.querySelector('td:nth-child(2)').textContent.replace('৳', '').replace(',', ''));
+        const quantity = parseInt(row.querySelector('.quantity-input').value);
+        const total = price * quantity;
+        
+        // Update row total
+        row.querySelector('td:nth-child(4)').textContent = '৳' + total.toLocaleString();
+        subtotal += total;
+    });
+    
+    // Update summary
+    const deliveryCharge = 60;
+    const tax = subtotal * 0.15;
+    const total = subtotal + deliveryCharge + tax;
+    
+    document.querySelector('.summary-row:nth-child(1) span:nth-child(2)').textContent = '৳' + subtotal.toLocaleString();
+    document.querySelector('.summary-row:nth-child(3) span:nth-child(2)').textContent = '৳' + tax.toFixed(0).toLocaleString();
+    document.querySelector('.summary-row.total span:nth-child(2)').textContent = '৳' + total.toFixed(0).toLocaleString();
+}
+
+function clearCart() {
+    if (confirm('আপনি কি নিশ্চিত যে আপনি কার্ট খালি করতে চান?')) {
+        document.querySelector('tbody').innerHTML = '';
+        updateCartTotal();
+        checkEmptyCart();
+    }
+}
+
+function updateCart() {
+    alert('কার্ট আপডেট করা হয়েছে!');
+    // In a real application, this would send data to server
+}
+
+function checkEmptyCart() {
+    const tbody = document.querySelector('tbody');
+    if (tbody.children.length === 0) {
+        document.getElementById('cartContent').innerHTML = `
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>আপনার কার্টটি খালি</h3>
+                <p>শপিং শুরু করতে আমাদের প্রোডাক্ট ব্রাউজ করুন</p>
+                <a href="products.html" class="btn-buy-now" style="display: inline-block; margin-top: 20px;">
+                    <i class="fas fa-shopping-bag"></i> শপিং শুরু করুন
+                </a>
+            </div>
+        `;
+    }
+}
+
+// Initialize
+updateCartTotal();
+</script>
+</body>
+</html>
