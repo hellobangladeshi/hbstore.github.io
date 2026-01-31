@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমাদের সম্পর্কে - HB Store</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+    .about-page {
+        padding: 80px 0;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    .page-header h1 {
+        font-size: 3rem;
+        color: var(--dark);
+        margin-bottom: 15px;
+    }
+    
+    .page-header p {
+        color: var(--gray);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .about-hero {
+        background: linear-gradient(135deg, rgba(239, 4, 121, 0.1), rgba(255, 217, 61, 0.1));
+        padding: 60px;
+        border-radius: 20px;
+        margin-bottom: 60px;
+        text-align: center;
+    }
+    
+    .about-hero h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        color: var(--dark);
+    }
+    
+    .about-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin: 60px 0;
+    }
+    
+    .stat-item {
+        text-align: center;
+        padding: 30px;
+        background: white;
+        border-radius: 15px;
+        border: 1px solid var(--gray-light);
+        transition: transform 0.3s ease;
+    }
+    
+    .stat-item:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow);
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    .stat-label {
+        color: var(--dark);
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+    
+    .mission-vision {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin: 60px 0;
+    }
+    
+    .mission-box, .vision-box {
+        padding: 40px;
+        background: white;
+        border-radius: 15px;
+        border: 1px solid var(--gray-light);
+    }
+    
+    .mission-box h3, .vision-box h3 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+    }
+    
+    .team-section {
+        margin: 80px 0;
+    }
+    
+    .team-section h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: var(--dark);
+    }
+    
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+    
+    .team-member {
+        text-align: center;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        border: 1px solid var(--gray-light);
+        transition: all 0.3s ease;
+    }
+    
+    .team-member:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow);
+    }
+    
+    .member-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: var(--gradient);
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: white;
+        font-weight: 600;
+    }
+    
+    .member-name {
+        font-size: 1.3rem;
+        color: var(--dark);
+        margin-bottom: 5px;
+    }
+    
+    .member-role {
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    
+    .member-social {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .member-social a {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--dark);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .member-social a:hover {
+        background: var(--primary);
+        color: white;
+    }
+    
+    .values-section {
+        margin: 80px 0;
+    }
+    
+    .values-section h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: var(--dark);
+    }
+    
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+    
+    .value-item {
+        text-align: center;
+        padding: 30px;
+    }
+    
+    .value-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--gradient);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 1.8rem;
+        color: white;
+    }
+    
+    .value-item h4 {
+        color: var(--dark);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+    }
+    
+    @media (max-width: 768px) {
+        .mission-vision {
+            grid-template-columns: 1fr;
+        }
+        
+        .about-hero {
+            padding: 40px 20px;
+        }
+        
+        .about-hero h2 {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <div class="logo-icon">HB</div>
+                <div class="logo-text">
+                    <h3>HB Store</h3>
+                    <span>আমাদের সম্পর্কে</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="products.html"><i class="fas fa-shopping-bag"></i> প্রোডাক্ট</a></li>
+                <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> আমাদের সম্পর্কে</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> যোগাযোগ</a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i> ব্লগ</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">2</span>
+                    </a>
+                </div>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Page -->
+<section class="about-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>আমাদের সম্পর্কে</h1>
+            <p>HB Store - বাংলাদেশের বিশ্বস্ত অনলাইন শপিং প্ল্যাটফর্ম</p>
+        </div>
+        
+        <div class="about-hero">
+            <h2>আমাদের গল্প</h2>
+            <p>২০২০ সালে যাত্রা শুরু করে, HB Store আজ বাংলাদেশের অন্যতম প্রিয় অনলাইন শপিং ডেস্টিনেশন। আমরা বিশ্বাস করি প্রত্যেক গ্রাহকের জীবনকে সহজ করতে প্রযুক্তির সঠিক ব্যবহার।</p>
+        </div>
+        
+        <div class="about-stats">
+            <div class="stat-item">
+                <span class="stat-number">৫০,০০০+</span>
+                <span class="stat-label">সন্তুষ্ট গ্রাহক</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">১০,০০০+</span>
+                <span class="stat-label">প্রোডাক্ট</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">৫০+</span>
+                <span class="stat-label">ব্র্যান্ড পার্টনার</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">৯৮%</span>
+                <span class="stat-label">গ্রাহক সন্তুষ্টি</span>
+            </div>
+        </div>
+        
+        <div class="mission-vision">
+            <div class="mission-box">
+                <h3>আমাদের মিশন</h3>
+                <p>বাংলাদেশের প্রতিটি ঘরে সহজে, দ্রুত এবং নির্ভরযোগ্যভাবে মানসম্মত প্রোডাক্ট পৌঁছে দেওয়া। আমরা চাই প্রতিটি গ্রাহক তাদের প্রয়োজনীয় প্রোডাক্ট সঠিক দামে, সহজ পদ্ধতিতে এবং সম্পূর্ণ নিরাপত্তায় কিনতে পারুক।</p>
+            </div>
+            
+            <div class="vision-box">
+                <h3>আমাদের ভিশন</h3>
+                <p>২০২৫ সালের মধ্যে বাংলাদেশের সবচেয়ে বিশ্বস্ত এবং জনপ্রিয় অনলাইন শপিং প্ল্যাটফর্ম হওয়া। আমরা চাই HB Store শুধু একটি ই-কমার্স সাইট না হয়ে বরং প্রতিটি গ্রাহকের জন্য একটি বিশ্বস্ত শপিং সঙ্গী হয়ে উঠুক।</p>
+            </div>
+        </div>
+        
+        <div class="values-section">
+            <h2>আমাদের মূল্যবোধ</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4>বিশ্বস্ততা</h4>
+                    <p>আমরা আমাদের প্রতিশ্রুতি রক্ষায় অঙ্গীকারবদ্ধ।</p>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>গ্রাহক প্রথম</h4>
+                    <p>গ্রাহকের সন্তুষ্টি আমাদের সর্বোচ্চ অগ্রাধিকার।</p>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h4>মান</h4>
+                    <p>শুধুমাত্র গ্যারান্টিযুক্ত ও মানসম্মত প্রোডাক্ট।</p>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>দ্রুততা</h4>
+                    <p>দ্রুত অর্ডার প্রসেসিং এবং ডেলিভারি।</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="team-section">
+            <h2>আমাদের দল</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">ফ</div>
+                    <h3 class="member-name">ফারাবি ওয়ালিদ</h3>
+                    <p class="member-role">প্রতিষ্ঠাতা ও সিইও</p>
+                    <p>১০+ বছর অভিজ্ঞতা সহ ফুল স্ট্যাক ডেভেলপার</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">স</div>
+                    <h3 class="member-name">সাদিয়া ইসলাম</h3>
+                    <p class="member-role">মার্কেটিং ডিরেক্টর</p>
+                    <p>ডিজিটাল মার্কেটিং বিশেষজ্ঞ</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">আ</div>
+                    <h3 class="member-name">আহমেদ হাসান</h3>
+                    <p class="member-role">প্রযুক্তি প্রধান</p>
+                    <p>সফটওয়্যার আর্কিটেক্ট</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">র</div>
+                    <h3 class="member-name">রাজীব আহমেদ</h3>
+                    <p class="member-role">গ্রাহক সেবা প্রধান</p>
+                    <p>গ্রাহক অভিজ্ঞতা বিশেষজ্ঞ</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>HB Store</h4>
+                <p>বাংলাদেশের বিশ্বস্ত অনলাইন শপিং প্ল্যাটফর্ম। সেরা দামে সেরা প্রোডাক্ট কিনুন এবং উপভোগ করুন নিরাপদ শপিং এক্সপেরিয়েন্স।</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>যোগাযোগ</h4>
+                <p><i class="fas fa-map-marker-alt"></i> ১২৩ শপিং স্ট্রিট, মতিঝিল, ঢাকা-১০০০</p>
+                <p><i class="fas fa-phone"></i> +৮৮০ ১৭১২-৩৪৫৬৭৮</p>
+                <p><i class="fas fa-envelope"></i> support@hbstore.com</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>কোম্পানি</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> আমাদের সম্পর্কে</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> যোগাযোগ</a></li>
+                    <li><a href="career.html"><i class="fas fa-chevron-right"></i> ক্যারিয়ার</a></li>
+                    <li><a href="blog.html"><i class="fas fa-chevron-right"></i> ব্লগ</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© ২০২৪ HB Store. সকল অধিকার সংরক্ষিত।</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
