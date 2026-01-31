@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সেবার শর্তাবলী - HB Store</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+    .terms-page {
+        padding: 80px 0;
+        background: #f8fafc;
+    }
+    
+    .terms-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        padding: 50px;
+        border-radius: 15px;
+        border: 1px solid var(--gray-light);
+        box-shadow: var(--shadow);
+    }
+    
+    .terms-header {
+        text-align: center;
+        margin-bottom: 40px;
+        border-bottom: 2px solid var(--gray-light);
+        padding-bottom: 30px;
+    }
+    
+    .terms-header h1 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 15px;
+    }
+    
+    .terms-content h2 {
+        color: var(--dark);
+        margin: 40px 0 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--gray-light);
+        counter-reset: section;
+    }
+    
+    .terms-content h3 {
+        color: var(--dark);
+        margin: 25px 0 15px;
+        font-size: 1.3rem;
+        counter-increment: subsection;
+        position: relative;
+        padding-left: 25px;
+    }
+    
+    .terms-content h3::before {
+        content: counter(section) "." counter(subsection) " ";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: 600;
+    }
+    
+    .terms-content p {
+        color: var(--gray);
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+    
+    .terms-content ul, .terms-content ol {
+        margin: 15px 0 20px 20px;
+        color: var(--gray);
+        line-height: 1.8;
+    }
+    
+    .terms-content li {
+        margin-bottom: 10px;
+    }
+    
+    .terms-content ol {
+        counter-reset: item;
+    }
+    
+    .terms-content ol li {
+        counter-increment: item;
+        position: relative;
+        padding-left: 25px;
+    }
+    
+    .terms-content ol li::before {
+        content: counter(item) ". ";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: 600;
+    }
+    
+    .important-note {
+        background: #fff3cd;
+        border: 1px solid #ffecb5;
+        color: #856404;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 25px 0;
+    }
+    
+    .warning-box {
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 25px 0;
+    }
+    
+    .definition-box {
+        background: #d1ecf1;
+        border: 1px solid #bee5eb;
+        color: #0c5460;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 25px 0;
+    }
+    
+    .acceptance-box {
+        background: linear-gradient(135deg, rgba(239, 4, 121, 0.05), rgba(255, 217, 61, 0.05));
+        padding: 25px;
+        border-radius: 10px;
+        margin: 40px 0;
+        border: 1px solid rgba(239, 4, 121, 0.1);
+        text-align: center;
+    }
+    
+    .back-to-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 40px;
+        transition: gap 0.3s ease;
+    }
+    
+    .back-to-home:hover {
+        gap: 15px;
+    }
+    
+    .table-of-contents {
+        background: #f8f9fa;
+        padding: 25px;
+        border-radius: 10px;
+        margin: 30px 0;
+        border-left: 4px solid var(--primary);
+    }
+    
+    .table-of-contents h3 {
+        margin-top: 0;
+        padding-left: 0;
+    }
+    
+    .table-of-contents h3::before {
+        content: none;
+    }
+    
+    .toc-list {
+        columns: 2;
+        column-gap: 30px;
+    }
+    
+    .toc-list a {
+        color: var(--primary);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 8px;
+        padding: 5px 0;
+        transition: padding-left 0.3s ease;
+    }
+    
+    .toc-list a:hover {
+        padding-left: 10px;
+        color: var(--accent);
+    }
+    
+    @media (max-width: 768px) {
+        .terms-container {
+            padding: 30px 20px;
+        }
+        
+        .terms-header h1 {
+            font-size: 2rem;
+        }
+        
+        .toc-list {
+            columns: 1;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <div class="logo-icon">HB</div>
+                <div class="logo-text">
+                    <h3>HB Store</h3>
+                    <span>সেবার শর্তাবলী</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="privacy-policy.html"><i class="fas fa-user-shield"></i> প্রাইভেসি</a></li>
+                <li><a href="terms.html" class="active"><i class="fas fa-file-contract"></i> শর্তাবলী</a></li>
+                <li><a href="refund.html"><i class="fas fa-undo-alt"></i> রিফান্ড</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Terms Page -->
+<section class="terms-page">
+    <div class="container">
+        <div class="terms-container">
+            <div class="terms-header">
+                <h1>সেবার শর্তাবলী</h1>
+                <p style="color: var(--gray);">সর্বশেষ আপডেট: ১ জানুয়ারি, ২০২৪</p>
+            </div>
+            
+            <div class="terms-content">
+                <div class="important-note">
+                    <p><strong>গুরুত্বপূর্ণ:</strong> HB Store ওয়েবসাইট ব্যবহারের পূর্বে দয়া করে এই শর্তাবলী মনোযোগ সহকারে পড়ুন। আমাদের সেবা ব্যবহার করে আপনি এই শর্তাবলী মেনে নিচ্ছেন বলে ধরে নেওয়া হবে।</p>
+                </div>
+                
+                <div class="table-of-contents">
+                    <h3>সূচিপত্র</h3>
+                    <div class="toc-list" id="tableOfContents">
+                        <!-- TOC will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <h2 id="section1">১. সংজ্ঞা</h2>
+                
+                <div class="definition-box">
+                    <p><strong>"সেবা"</strong> বলতে HB Store ওয়েবসাইট, মোবাইল অ্যাপ্লিকেশন এবং সংশ্লিষ্ট সেবাসমূহ বুঝাবে।</p>
+                    <p><strong>"ব্যবহারকারী"</strong> বলতে আমাদের সেবা ব্যবহারকারী যেকোনো ব্যক্তি বা প্রতিষ্ঠানকে বুঝাবে।</p>
+                    <p><strong>"প্রোডাক্ট"</strong> বলতে আমাদের ওয়েবসাইটে বিক্রয়ের জন্য প্রদর্শিত যেকোনো পণ্য বা সেবাকে বুঝাবে।</p>
+                </div>
+                
+                <h2 id="section2">২. অ্যাকাউন্ট নিবন্ধন</h2>
+                
+                <h3>অ্যাকাউন্টের জন্য যোগ্যতা</h3>
+                <p>HB Store অ্যাকাউন্ট তৈরি করতে আপনাকে অবশ্যই:</p>
+                <ol>
+                    <li>কমপক্ষে ১৩ বছর বয়সী হতে হবে</li>
+                    <li>সঠিক এবং সম্পূর্ণ তথ্য প্রদান করতে হবে</li>
+                    <li>সক্রিয় ইমেইল ঠিকানা থাকতে হবে</li>
+                    <li>বাংলাদেশের বাসিন্দা হতে হবে (বিশেষ ক্ষেত্র ছাড়া)</li>
+                </ol>
+                
+                <h3>অ্যাকাউন্ট নিরাপত্তা</h3>
+                <p>আপনি আপনার অ্যাকাউন্টের নিরাপত্তার জন্য দায়ী। আপনার পাসওয়ার্ড গোপন রাখুন এবং যেকোনো অননুমোদিত অ্যাক্সেসের ক্ষেত্রে আমাদের অবহিত করুন।</p>
+                
+                <h2 id="section3">৩. অর্ডার প্রসেসিং</h2>
+                
+                <h3>অর্ডার গ্রহণ</h3>
+                <p>অর্ডার কনফার্ম করার জন্য:</p>
+                <ul>
+                    <li>আপনার অর্ডার আমাদের গ্রহণ পর্যন্ত তা কনফার্ম নয়</li>
+                    <li>আমরা যেকোনো সময় যেকোনো কারণে অর্ডার বাতিল করার অধিকার রাখি</li>
+                    <li>ভুল দাম বা প্রোডাক্টের বর্ণনার জন্য আমরা দায়ী নই</li>
+                </ul>
+                
+                <h3>দাম এবং পেমেন্ট</h3>
+                <p>সমস্ত দাম বাংলাদেশী টাকায় (৳) প্রদর্শিত হয়। আমরা দাম পরিবর্তনের অধিকার রাখি। পেমেন্ট কনফার্ম না হওয়া পর্যন্ত অর্ডার প্রসেস করা হয় না।</p>
+                
+                <div class="warning-box">
+                    <p><strong>সতর্কতা:</strong> প্রতারণামূলক ট্রানজেকশনের জন্য আমরা দায়ী নই। যেকোনো সন্দেহজনক কার্যকলাপের জন্য আইন প্রয়োগকারী সংস্থাকে জানানোর অধিকার আমরা রাখি।</p>
+                </div>
+                
+                <h2 id="section4">৪. ডেলিভারি</h2>
+                
+                <h3>ডেলিভারি সময়</h3>
+                <p>ডেলিভারি সময়সীমা আনুমানিক এবং বিভিন্ন কারণের উপর নির্ভরশীল:</p>
+                <ul>
+                    <li>ঢাকা শহর: ২৪-৪৮ ঘন্টা</li>
+                    <li>বিভাগীয় শহর: ২-৩ কার্যদিবস</li>
+                    <li>জেলা শহর: ৩-৫ কার্যদিবস</li>
+                    <li>গ্রামাঞ্চল: ৫-৭ কার্যদিবস</li>
+                </ul>
+                
+                <h3>ডেলিভারি চার্জ</h3>
+                <p>ডেলিভারি চার্জ অর্ডারের পরিমাণ এবং অবস্থানের উপর নির্ভর করে। অর্ডার পৃষ্ঠায় চূড়ান্ত ডেলিভারি চার্জ দেখানো হবে।</p>
+                
+                <h2 id="section5">৫. রিটার্ন এবং রিফান্ড</h2>
+                
+                <h3>রিটার্ন পলিসি</h3>
+                <p>প্রোডাক্ট ডেলিভারির ৭ দিনের মধ্যে রিটার্ন করতে পারবেন যদি:</p>
+                <ol>
+                    <li>প্রোডাক্টে উৎপাদন ত্রুটি থাকে</li>
+                    <li>ভুল প্রোডাক্ট ডেলিভারি করা হয়েছে</li>
+                    <li>প্রোডাক্ট অক্ষত অবস্থায় আছে</li>
+                    <li>মূল প্যাকেজিং সংরক্ষিত আছে</li>
+                </ol>
+                
+                <h3>রিফান্ড প্রসেস</h3>
+                <p>রিফান্ড নিম্নলিখিত পদ্ধতিতে করা হবে:</p>
+                <ul>
+                    <li>রিফান্ড অনুরোধ গ্রহণের ৭-১০ কার্যদিবসের মধ্যে প্রসেস হবে</li>
+                    <li>মূল পেমেন্ট মেথডে রিফান্ড করা হবে</li>
+                    <li>ব্যাংক চার্জ কাটার পরে নেট অ্যামাউন্ট রিফান্ড হবে</li>
+                </ul>
+                
+                <h2 id="section6">৬. বুদ্ধিবৃত্তিক সম্পত্তি</h2>
+                
+                <h3>স্বত্বাধিকার</h3>
+                <p>HB Store ওয়েবসাইটের সমস্ত কন্টেন্ট, ডিজাইন, লোগো এবং সামগ্রী আমাদের স্বত্বাধিকারের অন্তর্ভুক্ত।</p>
+                
+                <h3>ব্যবহারের সীমাবদ্ধতা</h3>
+                <p>আপনি নিম্নলিখিত কাজ করতে পারবেন না:</p>
+                <ul>
+                    <li>আমাদের কন্টেন্ট কপি, পরিবর্তন বা পুনরুৎপাদন</li>
+                    <li>কমার্শিয়াল উদ্দেশ্যে আমাদের কন্টেন্ট ব্যবহার</li>
+                    <li>আমাদের ব্র্যান্ডিং নকল বা অনুকরণ</li>
+                    <li>রিভার্স ইঞ্জিনিয়ারিং বা ডিকম্পাইলিং</li>
+                </ul>
+                
+                <h2 id="section7">৭. ব্যবহারকারীর আচরণ</h2>
+                
+                <h3>নিষিদ্ধ কার্যকলাপ</h3>
+                <p>নিম্নলিখিত কার্যকলাপ নিষিদ্ধ:</p>
+                <ol>
+                    <li>অপমানজনক বা হুমকিমূলক ভাষা ব্যবহার</li>
+                    <li>ভুয়া তথ্য প্রদান</li>
+                    <li>অপরাধমূলক কার্যকলাপে জড়িত হওয়া</li>
+                    <li>সিস্টেমের নিরাপত্তা ভঙ্গ করা</li>
+                    <li>স্প্যাম বা বাণিজ্যিক বিজ্ঞাপন পোস্ট করা</li>
+                </ol>
+                
+                <h3>অ্যাকাউন্ট স্থগিতকরণ</h3>
+                <p>নিষিদ্ধ কার্যকলাপে জড়িত পাওয়া গেলে আমরা যেকোনো সময় আপনার অ্যাকাউন্ট স্থগিত বা বাতিল করতে পারি।</p>
+                
+                <h2 id="section8">৮. দায়বদ্ধতা সীমাবদ্ধতা</h2>
+                
+                <h3>পরোক্ষ ক্ষতির জন্য দায় না গ্রহণ</h3>
+                <p>আমরা নিম্নলিখিত ক্ষতির জন্য দায়ী নই:</p>
+                <ul>
+                    <li>ব্যবসায়িক ক্ষতি বা মুনাফা হারানো</li>
+                    <li>ডেটা হারানো</li>
+                    <li>প্রতিষ্ঠানের সুনাম ক্ষতিগ্রস্ত হওয়া</li>
+                    <li>যেকোনো পরোক্ষ বা বিশেষ ক্ষতি</li>
+                </ul>
+                
+                <h3>দায়বদ্ধতা সীমা</h3>
+                <p>যেকোনো ক্ষেত্রে আমাদের মোট দায়বদ্ধতা অর্ডারের মোট মূল্যের সমান বা তার চেয়ে কম হবে।</p>
+                
+                <h2 id="section9">৯. শর্তাবলীর পরিবর্তন</h2>
+                
+                <h3>নীতির আপডেট</h3>
+                <p>আমরা যেকোনো সময় এই শর্তাবলী পরিবর্তন করার অধিকার রাখি। পরিবর্তনগুলি এই পৃষ্ঠায় পোস্ট করা হবে।</p>
+                
+                <h3>অবহিতকরণ</h3>
+                <p>গুরুত্বপূর্ণ পরিবর্তনের ক্ষেত্রে আমরা ইমেইলের মাধ্যমে ব্যবহারকারীদের অবহিত করব।</p>
+                
+                <h2 id="section10">১০. আইনি বিষয়</h2>
+                
+                <h3>আইনি অধিক্ষেত্র</h3>
+                <p>এই শর্তাবলী বাংলাদেশের আইন দ্বারা পরিচালিত হবে। যেকোনো বিরোধের ক্ষেত্রে ঢাকার আদালতের এখতিয়ার থাকবে।</p>
+                
+                <h3>বিচ্ছিন্নতা</h3>
+                <p>এই শর্তাবলীর কোনো অংশ বেআইনি বা কার্যকর করা অযোগ্য হলে, বাকি অংশগুলো সম্পূর্ণ কার্যকর থাকবে।</p>
+                
+                <div class="acceptance-box">
+                    <h3 style="padding-left: 0; margin-top: 0;">শর্তাবলী গ্রহণ</h3>
+                    <p style="margin-bottom: 0;">আমাদের সেবা ব্যবহার করে আপনি এই শর্তাবলী মেনে নিচ্ছেন বলে ধরে নেওয়া হবে। যদি আপনি এই শর্তাবলীর সাথে একমত না হন, দয়া করে আমাদের সেবা ব্যবহার করবেন না।</p>
+                </div>
+                
+                <h2 id="section11">১১. যোগাযোগ</h2>
+                
+                <p>এই শর্তাবলী সম্পর্কে আপনার কোন প্রশ্ন থাকলে, দয়া করে আমাদের সাথে যোগাযোগ করুন:</p>
+                <ul>
+                    <li><strong>ইমেইল:</strong> legal@hbstore.com</li>
+                    <li><strong>ফোন:</strong> +৮৮০ ১৭১২-৩৪৫৬৭৮</li>
+                    <li><strong>ঠিকানা:</strong> ১২৩ শপিং স্ট্রিট, মতিঝিল, ঢাকা-১০০০</li>
+                    <li><strong>কর্মঘণ্টা:</strong> রবি-বৃহস্পতি: ৯:০০ AM - ৬:০০ PM</li>
+                </ul>
+                
+                <a href="index.html" class="back-to-home">
+                    <i class="fas fa-arrow-left"></i> মূল পৃষ্ঠায় ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>আইনি তথ্য</h4>
+                <p>আমাদের সেবা ব্যবহার করার আগে দয়া করে শর্তাবলী মনোযোগ সহকারে পড়ুন।</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>গুরুত্বপূর্ণ লিঙ্ক</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html"><i class="fas fa-chevron-right"></i> প্রাইভেসি পলিসি</a></li>
+                    <li><a href="terms.html" class="active"><i class="fas fa-chevron-right"></i> শর্তাবলী</a></li>
+                    <li><a href="refund.html"><i class="fas fa-chevron-right"></i> রিফান্ড পলিসি</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> আইনি যোগাযোগ</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© ২০২৪ HB Store. সকল অধিকার সংরক্ষিত।</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+// Generate Table of Contents
+document.addEventListener('DOMContentLoaded', function() {
+    const tocContainer = document.getElementById('tableOfContents');
+    const headings = document.querySelectorAll('.terms-content h2');
+    
+    if (tocContainer && headings.length > 0) {
+        let tocHTML = '';
+        
+        headings.forEach((heading, index) => {
+            const id = heading.id || `section${index + 1}`;
+            heading.id = id;
+            
+            const text = heading.textContent;
+            tocHTML += `<a href="#${id}">${text}</a>`;
+        });
+        
+        tocContainer.innerHTML = tocHTML;
+    }
+    
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+    
+    // Smooth scroll for TOC links
+    document.querySelectorAll('#tableOfContents a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
