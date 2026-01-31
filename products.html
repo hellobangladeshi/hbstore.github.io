@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সকল প্রোডাক্ট - HB Store</title>
+<meta name="description" content="HB Store - সকল প্রোডাক্ট ব্রাউজ করুন। ইলেকট্রনিক্স, ফ্যাশন, হোম অ্যাপ্লায়েন্স সহ ১০০+ প্রোডাক্ট">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- Header & Navigation (index.html এর মতোই) -->
+<header>
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <div class="logo-icon">HB</div>
+                <div class="logo-text">
+                    <h3>HB Store</h3>
+                    <span>সকল প্রোডাক্ট</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="index.html#categories"><i class="fas fa-th-large"></i> ক্যাটাগরি</a></li>
+                <li><a href="index.html#featured"><i class="fas fa-star"></i> ফিচার্ড</a></li>
+                <li><a href="products.html" class="active"><i class="fas fa-shopping-bag"></i> সকল প্রোডাক্ট</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> আমাদের সম্পর্কে</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icons">
+                    <a href="#" class="nav-icon" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="nav-icon favorite-icon" id="favoritesBtn">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorite-count">3</span>
+                    </a>
+                    <a href="#" class="nav-icon cart-icon" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">2</span>
+                    </a>
+                </div>
+                <a href="login.html" class="btn-login">
+                    <i class="fas fa-user"></i> লগইন
+                </a>
+                
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Products Page Content -->
+<section class="products-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>সকল প্রোডাক্ট</h1>
+            <p>আমাদের সকল প্রোডাক্ট এক জায়গায়</p>
+        </div>
+        
+        <!-- Products Filter -->
+        <div class="products-filter-container">
+            <div class="filter-sidebar">
+                <h3>ফিল্টার</h3>
+                
+                <div class="filter-section">
+                    <h4>ক্যাটাগরি</h4>
+                    <div class="filter-options">
+                        <label class="filter-checkbox">
+                            <input type="checkbox" checked> ইলেকট্রনিক্স
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox"> মোবাইল ফোন
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" checked> ফ্যাশন
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox"> হোম অ্যাপ্লায়েন্স
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox"> বিউটি
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox"> স্পোর্টস
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h4>দাম</h4>
+                    <div class="price-range">
+                        <input type="range" min="0" max="500000" value="250000" class="price-slider">
+                        <div class="price-values">
+                            <span>৳<span id="minPrice">0</span></span>
+                            <span>৳<span id="maxPrice">500,000</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h4>সরটিং</h4>
+                    <select class="sort-select">
+                        <option value="default">ডিফল্ট</option>
+                        <option value="price-low">দাম: কম থেকে বেশি</option>
+                        <option value="price-high">দাম: বেশি থেকে কম</option>
+                        <option value="newest">নতুনতম</option>
+                        <option value="popular">জনপ্রিয়</option>
+                        <option value="rating">রেটিং</option>
+                    </select>
+                </div>
+                
+                <button class="apply-filter-btn">ফিল্টার প্রয়োগ করুন</button>
+                <button class="reset-filter-btn">রিসেট</button>
+            </div>
+            
+            <div class="products-main">
+                <div class="products-top-bar">
+                    <div class="products-count">
+                        <span>২৪টি প্রোডাক্ট পাওয়া গেছে</span>
+                    </div>
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="products-container grid-view">
+                    <!-- Product Grid (index.html থেকে কপি করব) -->
+                    <div class="product-card" data-category="electronics">
+                        <div class="product-badge hot">হট</div>
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="ল্যাপটপ">
+                            <div class="product-actions">
+                                <button class="product-action-btn favorite">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="product-action-btn" onclick="window.location.href='product-details.html'">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">ইলেকট্রনিক্স</div>
+                            <h3 class="product-title">Dell XPS 13 ল্যাপটপ</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(৪.৫)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">৳৮৫,৯৯৯</span>
+                                <span class="original-price">৳৯৯,৯৯৯</span>
+                                <span class="discount">১৪% ছাড়</span>
+                            </div>
+                            <div class="product-footer">
+                                <button class="btn-add-to-cart">
+                                    <i class="fas fa-cart-plus"></i> কার্টে যোগ
+                                </button>
+                                <span class="product-stock">স্টকে আছে</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- আরও প্রোডাক্ট যোগ করুন -->
+                    <div class="product-card" data-category="mobile">
+                        <div class="product-badge new">নতুন</div>
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="স্মার্টফোন">
+                            <div class="product-actions">
+                                <button class="product-action-btn favorite">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="product-action-btn" onclick="window.location.href='product-details.html'">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">মোবাইল ফোন</div>
+                            <h3 class="product-title">Samsung Galaxy S23 Ultra</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(৫.০)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">৳১,২৫,৯৯৯</span>
+                                <span class="original-price">৳১,৩৯,৯৯৯</span>
+                                <span class="discount">১০% ছাড়</span>
+                            </div>
+                            <div class="product-footer">
+                                <button class="btn-add-to-cart">
+                                    <i class="fas fa-cart-plus"></i> কার্টে যোগ
+                                </button>
+                                <span class="product-stock low">শেষ হচ্ছে</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- আরও প্রোডাক্ট... -->
+                    <div class="load-more-container">
+                        <button class="load-more-btn">
+                            <i class="fas fa-sync-alt"></i> আরও প্রোডাক্ট লোড করুন
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer (index.html এর মতোই) -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>HB Store</h4>
+                <p>বাংলাদেশের বিশ্বস্ত অনলাইন শপিং প্ল্যাটফর্ম। সেরা দামে সেরা প্রোডাক্ট কিনুন এবং উপভোগ করুন নিরাপদ শপিং এক্সপেরিয়েন্স।</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@HBStoreOfficial" target="_blank" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>দ্রুত লিঙ্ক</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> হোম</a></li>
+                    <li><a href="products.html"><i class="fas fa-chevron-right"></i> সকল প্রোডাক্ট</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> আমাদের সম্পর্কে</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> যোগাযোগ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>ক্যাটাগরি</h4>
+                <ul class="footer-links">
+                    <li><a href="category.html?cat=electronics"><i class="fas fa-chevron-right"></i> ইলেকট্রনিক্স</a></li>
+                    <li><a href="category.html?cat=mobile"><i class="fas fa-chevron-right"></i> মোবাইল ফোন</a></li>
+                    <li><a href="category.html?cat=fashion"><i class="fas fa-chevron-right"></i> ফ্যাশন</a></li>
+                    <li><a href="category.html?cat=home"><i class="fas fa-chevron-right"></i> হোম অ্যাপ্লায়েন্স</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>আমাদের ঠিকানা</h4>
+                <p><i class="fas fa-map-marker-alt"></i> ১২৩ শপিং স্ট্রিট, মতিঝিল, ঢাকা-১০০০</p>
+                <p><i class="fas fa-phone"></i> +৮৮০ ১৭১২-৩৪৫৬৭৮</p>
+                <p><i class="fas fa-envelope"></i> support@hbstore.com</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="footer-copyright">
+                    <p>© ২০২৪ HB Store. সকল অধিকার সংরক্ষিত।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/products.js"></script>
+<script>
+// Products Page Specific Scripts
+document.addEventListener('DOMContentLoaded', function() {
+    // View Toggle
+    const viewBtns = document.querySelectorAll('.view-btn');
+    const productsContainer = document.querySelector('.products-container');
+    
+    viewBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            viewBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            if (this.dataset.view === 'grid') {
+                productsContainer.classList.remove('list-view');
+                productsContainer.classList.add('grid-view');
+            } else {
+                productsContainer.classList.remove('grid-view');
+                productsContainer.classList.add('list-view');
+            }
+        });
+    });
+    
+    // Price Slider
+    const priceSlider = document.querySelector('.price-slider');
+    const maxPrice = document.getElementById('maxPrice');
+    
+    if (priceSlider) {
+        priceSlider.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            maxPrice.textContent = value.toLocaleString();
+        });
+    }
+});
+</script>
+</body>
+</html>
